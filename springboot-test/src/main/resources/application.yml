@@ -1,0 +1,31 @@
+server:
+  port: 8801
+spring:
+  profiles:
+    include:
+      - redis
+  datasource:
+    name: test
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      driver-class-name: oracle.jdbc.driver.OracleDriver
+      url: jdbc:oracle:thin:@10.168.12.41:1215:ryddb
+      username: UAF_BHCRT
+      password: Y_dev_u40_N_01
+      # username: HA9XycbRAPmJBi/LlbuN/4bFZzqBn2IY1So9qZsLEZ1Cvcj81yjyzajOF/JMa7mkyaujop4K+CWfH5U5gSsPuw==
+      # password: JWEr6MCBH6q4aK95OL8F4RATJ+GZKQfFx0ZIkvAtnaxiT0Y8PjEx4295T18X0NVbUWnqMuvGlJzyXRSLxnekCQ==
+      # public-key: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBANMZW5U6obDsbioc/mnWftmt4acy4SNtF6RAa+xZeVh9Lb0pshmCg5Bh19Fr8/e6p1Z3NTSfP1YOTdhCRJACjCECAwEAAQ==
+      validation-query: "SELECT 'X' FROM DUAL"     #数据库连接验证
+      min-idle: 5                                  #数据库连接池的最小维持连接数
+      initial-size: 5                              #初始化提供的连接数
+      max-active: 10                               #最大的连接数
+      max-wait: 200                                #等待连接获取的最大超时时间(毫秒)
+      validation-query-timeout: 10                 #确认连接有效SQL的执行查询超时时间（秒）
+      test-while-idle: true                        #假如一个对象验证失败，则对象将被从池中释放
+      # connectionProperties: config.decrypt=true;config.decrypt.key=${spring.datasource.public-key}        #配置ConfigFilter解密密码
+      filters: config,stat,wall,log4j
+mybatis:
+  config-location: classpath:com/noodles/springboottest/springbootmybatis/mapper/mybatis.cfg.xml
+  type-aliases-package: com.noodles.springboottest.springbootmybatis.bean                                            #实体类所在包
+  mapper-locations: classpath:com/noodles/springboottest/springbootmybatis/mapper/*Mapper.xml                        #mapper配置文件
+

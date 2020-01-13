@@ -5,6 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
     <modules>
         <module>springcloud-eureka</module>
+        <module>microservice-redis</module>
+        <module>microservice-log</module>
+        <module>springboot-test</module>
+        <module>microservice-nodb-provider</module>
+        <module>microservice-provider</module>
     </modules>
 
     <parent>
@@ -17,7 +22,7 @@
     <groupId>com.noodles</groupId>
     <artifactId>springcloud-parent</artifactId>
     <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.0.1-SNAPSHOT</version>
 
     <distributionManagement>
         <snapshotRepository>
@@ -41,8 +46,9 @@
         <sonar.scanner.version>3.5.0.1254</sonar.scanner.version>
         <spring.cloud.version>Finchley.SR2</spring.cloud.version>
         <spring.mybatis.version>2.0.0</spring.mybatis.version>
+        <tk.mybatis.version>1.1.4</tk.mybatis.version>
         <org.hibernate.version>6.0.9.Final</org.hibernate.version>
-        <alibaba.druid.version>1.0.31</alibaba.druid.version>
+        <alibaba.druid.version>1.1.9</alibaba.druid.version>
         <com.oracle.version>11g</com.oracle.version>
         <redis.clients.version>2.9.0</redis.clients.version>
         <org.redisson.version>3.8.2</org.redisson.version>
@@ -81,6 +87,11 @@
                 <artifactId>mybatis-spring-boot-starter</artifactId>
                 <version>${spring.mybatis.version}</version>
             </dependency>
+            <dependency>
+                <groupId>tk.mybatis</groupId>
+                <artifactId>mapper-spring-boot-starter</artifactId>
+                <version>${tk.mybatis.version}</version>
+            </dependency>
             <!--validator依赖-->
             <dependency>
                 <groupId>org.hibernate</groupId>
@@ -90,7 +101,7 @@
             <!--druid连接池-->
             <dependency>
                 <groupId>com.alibaba</groupId>
-                <artifactId>druid</artifactId>
+                <artifactId>druid-spring-boot-starter</artifactId>
                 <version>${alibaba.druid.version}</version>
             </dependency>
             <!--oracle驱动-->
@@ -162,6 +173,26 @@
                 <groupId>com.ctrip.framework.apollo</groupId>
                 <artifactId>apollo-client</artifactId>
                 <version>${apollo.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.noodles</groupId>
+                <artifactId>microservice-log</artifactId>
+                <version>${com.noodles.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.noodles</groupId>
+                <artifactId>microservice-redis</artifactId>
+                <version>${com.noodles.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.noodles</groupId>
+                <artifactId>microservice-nodb-provider</artifactId>
+                <version>${com.noodles.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.noodles</groupId>
+                <artifactId>microservice-provider</artifactId>
+                <version>${com.noodles.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
