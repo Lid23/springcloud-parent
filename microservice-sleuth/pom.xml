@@ -9,8 +9,9 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>microservice-nodb-provider</artifactId>
-
+    <artifactId>microservice-sleuth</artifactId>
+    <packaging>jar</packaging>
+    <description>链路追踪</description>
 
     <dependencies>
         <!--boot依赖-->
@@ -24,26 +25,12 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <!--test依赖-->
+        <!--common-->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-        </dependency>
-        <!--eureka注册中心-->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-        </dependency>
-        <!--aop依赖-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-aop</artifactId>
-        </dependency>
-        <!--spring boot actuator-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
+            <groupId>com.noodles</groupId>
+            <artifactId>microservice-utils</artifactId>
         </dependency>
     </dependencies>
+
 
 </project>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>springcloud-parent</artifactId>
+        <groupId>com.noodles</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>springcloud-test-parent</artifactId>
+    <packaging>pom</packaging>
+
+
+    <properties>
+        <com.noodles.version>0.0.1-SNAPSHOT</com.noodles.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compile.source>1.8</maven.compile.source>
+        <maven.compile.target>1.8</maven.compile.target>
+    </properties>
+
+    <modules>
+        <module>springcloud-test-provider</module>
+    </modules>
+
+
+    <dependencyManagement>
+        <dependencies>
+            <!--聚合服务（提供oracle数据库，spring boot，spring cloud等支持）-->
+            <dependency>
+                <groupId>com.noodles</groupId>
+                <artifactId>microservice-provider</artifactId>
+                <version>${com.noodles.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!--核心微服务api接口-->
+            <dependency>
+                <groupId>com.noodles</groupId>
+                <artifactId>microservice-api</artifactId>
+                <version>${com.noodles.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.noodles</groupId>
+                <artifactId>springcloud-feign</artifactId>
+                <version>${com.noodles.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.noodles</groupId>
+                <artifactId>microservice-redis</artifactId>
+                <version>${com.noodles.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.noodles</groupId>
+                <artifactId>microservice-log</artifactId>
+                <version>${com.noodles.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.noodles</groupId>
+                <artifactId>microservice-utils</artifactId>
+                <version>${com.noodles.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.noodles</groupId>
+                <artifactId>microservice-sleuth</artifactId>
+                <version>${com.noodles.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+
+</project>

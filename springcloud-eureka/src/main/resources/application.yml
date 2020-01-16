@@ -1,0 +1,75 @@
+spring:
+  application:
+    name: microservice-eureka
+---
+server:
+  port: 8101
+spring:
+  profiles: dev-8101
+  security:
+    user:
+      name: yrz_eureka
+      password: yrz_eureka
+      roles:
+        - USER
+eureka:
+  instance:
+    hostname: 10.168.96.41                                 #eureka实例名称
+  environment: uat                                         #指定eureka当前环境
+  server:
+    enable-self-preservation: false                        #禁用自我保护模式(仅测试时使用)
+    eviction-interval-timer-in-ms: 3000                    #清理无效节点的时间间隔(ms)
+    response-cache-update-interval-ms: 3000                #eureka server刷新readCacheMap的时间(默认30s)
+  client:
+    register-with-eureka: true                             #是否将自己注册到Eureka Server
+    fetch-registry: false                                  #不通过eureka获取注册信息
+    service-url:
+      defaultZone: http://yrz_eureka:yrz_eureka@10.168.96.41:8102/eureka/,http://yrz_eureka:yrz_eureka@10.168.96.41:8103/eureka/
+---
+server:
+  port: 8102
+spring:
+  profiles: dev-8102
+  security:
+    user:
+      name: yrz_eureka
+      password: yrz_eureka
+      roles:
+        - USER
+eureka:
+  instance:
+    hostname: 10.168.96.41                                 #eureka实例名称
+  environment: uat                                         #指定eureka当前环境
+  server:
+    enable-self-preservation: false                        #禁用自我保护模式(仅测试时使用)
+    eviction-interval-timer-in-ms: 3000                    #清理无效节点的时间间隔(ms)
+    response-cache-update-interval-ms: 3000                #eureka server刷新readCacheMap的时间(默认30s)
+  client:
+    register-with-eureka: true                             #是否将自己注册到Eureka Server
+    fetch-registry: false                                  #不通过eureka获取注册信息
+    service-url:
+      defaultZone: http://yrz_eureka:yrz_eureka@10.168.96.41:8101/eureka/,http://yrz_eureka:yrz_eureka@10.168.96.41:8103/eureka/
+---
+server:
+  port: 8103
+spring:
+  profiles: dev-8103
+  security:
+    user:
+      name: yrz_eureka
+      password: yrz_eureka
+      roles:
+        - USER
+eureka:
+  instance:
+    hostname: 10.168.96.41                                 #eureka实例名称
+  environment: uat                                         #指定eureka当前环境
+  server:
+    enable-self-preservation: false                        #禁用自我保护模式(仅测试时使用)
+    eviction-interval-timer-in-ms: 3000                    #清理无效节点的时间间隔(ms)
+    response-cache-update-interval-ms: 3000                #eureka server刷新readCacheMap的时间(默认30s)
+  client:
+    register-with-eureka: true                             #是否将自己注册到Eureka Server
+    fetch-registry: false                                  #不通过eureka获取注册信息
+    service-url:
+      defaultZone: http://yrz_eureka:yrz_eureka@10.168.96.41:8101/eureka/,http://yrz_eureka:yrz_eureka@10.168.96.41:8102/eureka/

@@ -4,12 +4,21 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <modules>
-        <module>springcloud-eureka</module>
+        <module>springcloud-eureka-apollo</module>
         <module>microservice-redis</module>
         <module>microservice-log</module>
-        <module>springboot-test</module>
+        <module>springcloud-test-parent</module>
         <module>microservice-nodb-provider</module>
         <module>microservice-provider</module>
+        <module>springcloud-eureka</module>
+        <module>microservice-api</module>
+        <module>microservice-utils</module>
+        <module>springcloud-feign</module>
+        <module>microservice-mongodb-provider</module>
+        <module>microservice-security</module>
+        <module>microservice-sleuth</module>
+        <module>springcloud-test-parent</module>
+        <module>springcloud-gateway</module>
     </modules>
 
     <parent>
@@ -48,7 +57,7 @@
         <spring.mybatis.version>2.0.0</spring.mybatis.version>
         <tk.mybatis.version>1.1.4</tk.mybatis.version>
         <org.hibernate.version>6.0.9.Final</org.hibernate.version>
-        <alibaba.druid.version>1.1.9</alibaba.druid.version>
+        <alibaba.druid.version>1.1.21</alibaba.druid.version>
         <com.oracle.version>11g</com.oracle.version>
         <redis.clients.version>2.9.0</redis.clients.version>
         <org.redisson.version>3.8.2</org.redisson.version>
@@ -177,6 +186,26 @@
             <dependency>
                 <groupId>com.noodles</groupId>
                 <artifactId>microservice-log</artifactId>
+                <version>${com.noodles.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.noodles</groupId>
+                <artifactId>microservice-api</artifactId>
+                <version>${com.noodles.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.noodles</groupId>
+                <artifactId>microservice-utils</artifactId>
+                <version>${com.noodles.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.noodles</groupId>
+                <artifactId>microservice-security</artifactId>
+                <version>${com.noodles.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.noodles</groupId>
+                <artifactId>microservice-sleuth</artifactId>
                 <version>${com.noodles.version}</version>
             </dependency>
             <dependency>

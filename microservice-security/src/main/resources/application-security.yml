@@ -1,0 +1,8 @@
+spring:
+  security:
+    user:
+      name: yrzcredit
+      password: yrzcredit
+      roles:
+        - USER
+        - ACTUATOR

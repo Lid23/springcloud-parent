@@ -1,0 +1,92 @@
+server:
+  port: 8201
+spring:
+  http:
+    multipart:
+      max-file-size: 50Mb
+      max-request-size: 50Mb
+  application:
+    name: springcloud-gateway
+  profiles:
+    include:
+      - redis                                                      #加载microservice-Redis配置文件
+      - security
+  security:
+    user:
+      name: yrzcredit
+      password: yrzcredit
+      roles:
+        - USER
+  cloud:
+    gateway:
+      routes:
+        - id: springcloud-test-provider-route
+          uri: lb://SPRINGCLOUD-TEST-PROVIDER
+          predicates:
+            - Path=/springcloudtestprovider/v1/*                                    #路径匹配,匹配所有请求路径以/api/credit-auth开头的用户请求
+          filters:
+            - name: Hystrix
+              args:
+                name: default
+                fallbackUri: 'forward:/defaultfallback'
+  datasource:
+    name: springcloudgateway
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      driver-class-name: oracle.jdbc.driver.OracleDriver
+      url: jdbc:oracle:thin:@10.168.12.41:1215:ryddb
+      username: UAF_MER
+      password: Y_dev_u41_O_03
+      validation-query: "SELECT 'X' FROM DUAL"     #数据库连接验证
+      min-idle: 5                                  #数据库连接池的最小维持连接数
+      initial-size: 5                              #初始化提供的连接数
+      max-active: 10                               #最大的连接数
+      max-wait: 200                                #等待连接获取的最大超时时间(毫秒)
+      validation-query-timeout: 10                 #确认连接有效SQL的执行查询超时时间（秒）
+      test-while-idle: true                        #假如一个对象验证失败，则对象将被从池中释放
+      filters: config,stat,wall,log4j
+mybatis:
+  config-location: classpath:com/noodles/gateway/mapper/mybatis.cfg.xml
+  type-aliases-package: com.noodles.gateway.bean                                                          #实体类所在包
+  mapper-locations: classpath:com/noodles/gateway/mapper/*Mapper.xml                                  #mapper配置文件                                    #日志打印
+eureka:
+  client:
+    service-url:
+      defaultZone: http://yrz_eureka:yrz_eureka@10.168.96.41:8101/eureka/,http://yrz_eureka:yrz_eureka@10.168.96.41:8102/eureka/,http://yrz_eureka:yrz_eureka@10.168.96.41:8103/eureka/
+    registry-fetch-interval-seconds: 3                                #表示eureka client间隔多久去拉取服务注册信息，默认为30秒
+  instance:
+    health-check-url-path: /actuator/health
+    metadata-map:                                                     #元数据设置
+      user.name: ${spring.security.user.name}
+      user.password: ${spring.security.user.password}
+      gated-launch: true                                              #灰度调用
+      group-name: all
+      gray-server-name: none
+    lease-renewal-interval-in-seconds: 5                              #设置心跳的时间间隔（默认是30秒）
+    lease-expiration-duration-in-seconds: 15                          #上一次收到client的心跳之后,等待下一次心跳的超时时间（默认是90秒）
+    instance-id: ${spring.application.name}:${random.int}             #在信息列表时显示主机名称
+    prefer-ip-address: true                                           #灰度调用
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - "*"                                                       #暴露所有接口
+  endpoint:
+    health:
+      show-details: ALWAYS                                           #向所有用户显示详细信息
+hystrix:
+  command:
+    default:                                                         #default匹配网关过滤器filters.args.name: default
+      execution:
+        isolation:
+          strategy: SEMAPHORE
+          thread:
+            timeoutInMilliseconds: 6000
+  shareSecurityContext: true
+ribbon:
+  ServerListRefreshInterval: 5000               #eureka客户端ribbon刷新时间(默认30s)
+logging:
+  level:
+    # com.noodles.gateway.dao: TRACE
+    com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver: WARN

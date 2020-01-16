@@ -9,9 +9,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>springcloud-eureka</artifactId>
+    <artifactId>springcloud-eureka-apollo</artifactId>
     <packaging>jar</packaging>
     <description>微服务注册中心</description>
+
     <properties>
         <!-- 跳过本模块deploy -->
         <maven.deploy.skip>true</maven.deploy.skip>
@@ -53,10 +54,27 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.ctrip.framework.apollo</groupId>
+            <artifactId>apollo-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.ctrip.framework.apollo</groupId>
+            <artifactId>apollo-core</artifactId>
+            <version>1.5.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.inject</groupId>
+            <artifactId>guice</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
-        <finalName>springcloud-eureka</finalName>
+        <finalName>springcloud-eureka-apollo</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

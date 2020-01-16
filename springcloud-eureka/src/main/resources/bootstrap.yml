@@ -1,7 +1,0 @@
-app:
-  id: springcloud-eureka                                #从服务端获取配置的唯一标识
-apollo:
-  cacheDir: usr/local/noodles/config-data                   #本地缓存路径
-  bootstrap:
-    enabled: true
-    namespaces: application                              #配置项集合

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.noodles.gateway.dao.IMerchantAuthDao">
+
+    <!--认证通商户配置表-->
+    <resultMap id="YrzMerchantConfMap" type="com.noodles.gateway.bean.MerchantConfBean">
+        <id column="YRZ_MERCHANT_CONF_ID" jdbcType="INTEGER" property="yrzMerchantConfId"/>
+        <result column="MERCHANT_ID" jdbcType="VARCHAR" property="merchantId"/>
+        <result column="MERCHANT_KEY" jdbcType="VARCHAR" property="merchantKey"/>
+        <result column="MERCHANT_NAME" jdbcType="VARCHAR" property="merchantName"/>
+        <result column="ORG_ID" jdbcType="VARCHAR" property="orgId"/>
+        <result column="PUBLIC_KEY" jdbcType="VARCHAR" property="publicKey"/>
+        <result column="SOURCE_SYSTEM" jdbcType="VARCHAR" property="sourceSystem"/>
+        <result column="STATUS" jdbcType="VARCHAR" property="status"/>
+        <result column="CREATED_BY" jdbcType="VARCHAR" property="createdBy"/>
+        <result column="CREATED_DATE" jdbcType="DATE" property="createdDate"/>
+        <result column="UPDATED_BY" jdbcType="VARCHAR" property="updatedBy"/>
+        <result column="UPDATED_DATE" jdbcType="DATE" property="updatedDate"/>
+    </resultMap>
+
+    <!--认证通商户限制表-->
+    <resultMap id="YrzMerchantLimitMap" type="com.noodles.gateway.bean.MerchantLimitBean">
+        <id column="MERCHANT_LIMIT_ID" jdbcType="INTEGER" property="merchantLimitId"/>
+        <result column="MERCHANT_ID" jdbcType="VARCHAR" property="merchantId"/>
+        <result column="LIMIT_ITEM" jdbcType="VARCHAR" property="limitItem"/>
+        <result column="LIMIT_VALUE" jdbcType="VARCHAR" property="limitValue"/>
+        <result column="LIMIT_TYPE" jdbcType="VARCHAR" property="limitType"/>
+        <result column="SOURCE_SYSTEM" jdbcType="VARCHAR" property="sourceSystem"/>
+        <result column="STATUS" jdbcType="VARCHAR" property="status"/>
+        <result column="CREATED_BY" jdbcType="VARCHAR" property="createdBy"/>
+        <result column="CREATED_DATE" jdbcType="DATE" property="createdDate"/>
+        <result column="UPDATED_BY" jdbcType="VARCHAR" property="updatedBy"/>
+        <result column="UPDATED_DATE" jdbcType="DATE" property="updatedDate"/>
+    </resultMap>
+
+    <sql id="Merchant_Conf_Column_List">
+        YRZ_MERCHANT_CONF_ID, MERCHANT_ID, MERCHANT_KEY, MERCHANT_NAME, ORG_ID, PUBLIC_KEY,
+        SOURCE_SYSTEM, STATUS, CREATED_BY, CREATED_DATE, UPDATED_BY, UPDATED_DATE
+    </sql>
+
+    <sql id="Merchant_Limit_Column_List">
+        MERCHANT_LIMIT_ID, MERCHANT_ID, LIMIT_ITEM, LIMIT_VALUE, LIMIT_TYPE, SOURCE_SYSTEM,
+        STATUS, CREATED_BY, CREATED_DATE, UPDATED_BY, UPDATED_DATE
+    </sql>
+
+
+    <!--获取认证通商户配置信息-->
+    <select id="queryMerchantConf" resultMap="YrzMerchantConfMap"
+            parameterType="com.noodles.gateway.bean.MerchantConfBean">
+        select
+        <include refid="Merchant_Conf_Column_List"/>
+        from YRZ_MERCHANT_CONF
+        where MERCHANT_ID = #{merchantId}
+        and MERCHANT_KEY = #{merchantKey}
+        and STATUS = #{status}
+    </select>
+
+    <!--获取认证通商户限制信息-->
+    <select id="queryMerchantLimits" resultMap="YrzMerchantLimitMap" parameterType="java.lang.String">
+        select
+        <include refid="Merchant_Limit_Column_List"/>
+        from YRZ_MERCHANT_LIMIT
+        where MERCHANT_ID = #{merchantId}
+    </select>
+
+</mapper>
