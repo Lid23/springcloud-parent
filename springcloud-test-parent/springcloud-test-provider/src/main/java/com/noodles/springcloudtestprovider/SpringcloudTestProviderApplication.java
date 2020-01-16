@@ -6,12 +6,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.ComponentScan;
 
-/**
- * 百行provider启动类
- * @filename BaihangCreditApplication
- * @author 巫威
- * @date 2019/8/12 18:09
- */
 @SpringBootApplication
 @EnableDiscoveryClient
 @ComponentScan(basePackages = { "com.noodles.springcloudtestprovider", "com.noodles.security", "com.noodles.redis" })

@@ -1,0 +1,27 @@
+server:
+  port: 8802
+  servlet:
+    context-path: /springcloudtestclient
+spring:
+  application:
+    name: springcloud-test-client
+eureka:
+  client:
+    service-url:
+      defaultZone: http://yrz_eureka:yrz_eureka@10.168.96.41:8101/eureka/,http://yrz_eureka:yrz_eureka@10.168.96.41:8102/eureka/,http://yrz_eureka:yrz_eureka@10.168.96.41:8103/eureka/
+    registry-fetch-interval-seconds: 3                                #表示eureka client间隔多久去拉取服务注册信息，默认为30秒
+  instance:
+    health-check-url-path: ${server.servlet.context-path}/actuator/health
+    home-page-url-path: ${server.servlet.context-path}
+    status-page-url-path: ${server.servlet.context-path}/actuator/info
+    metadata-map:                                                     #元数据设置
+      user.name: ${spring.security.user.name}
+      user.password: ${spring.security.user.password}
+      management:
+        context-path: ${server.servlet.context-path}/actuator         #将此路径追加到服务URL中
+      gated-launch: true                                              #灰度调用
+    lease-renewal-interval-in-seconds: 5                              #设置心跳的时间间隔（默认是30秒）
+    lease-expiration-duration-in-seconds: 15                          #上一次收到client的心跳之后,等待下一次心跳的超时时间（默认是90秒）
+    instance-id: ${spring.application.name}:${random.int}             #在信息列表时显示主机名称
+    prefer-ip-address: true                                           #灰度调用
+

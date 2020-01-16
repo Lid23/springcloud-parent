@@ -14,7 +14,7 @@ public interface IMerchantAuthService {
 	/**
 	 * 功能描述
 	 * @param baseReqVo 公共请求Vo
-	 * @return com.uaf.api.vo.resp.BaseRespVo<?> 公共响应Vo
+	 * @return com.noodles.api.vo.resp.BaseRespVo<?> 公共响应Vo
 	 * @author Eric
 	 * @exception
 	 * @date 2019/4/25 12:07

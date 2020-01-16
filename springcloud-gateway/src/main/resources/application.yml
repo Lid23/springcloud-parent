@@ -85,6 +85,8 @@ hystrix:
             timeoutInMilliseconds: 6000
   shareSecurityContext: true
 ribbon:
+  ReadTimeout: 10000
+  ConnectTimeout: 10000
   ServerListRefreshInterval: 5000               #eureka客户端ribbon刷新时间(默认30s)
 logging:
   level:
