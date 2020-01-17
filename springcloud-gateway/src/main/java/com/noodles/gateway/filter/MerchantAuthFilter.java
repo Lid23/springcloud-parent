@@ -66,10 +66,10 @@ public class MerchantAuthFilter implements GlobalFilter, Ordered {
 		String bodyStr = stringRedisTemplate.opsForValue().get("microservice:gateway:".concat(token));
 		String clientIp = exchange.getRequest().getHeaders().getFirst("X-Real-IP");
 		BaseReqVo baseReqVo = JsonUtils.fromJson(bodyStr, BaseReqVo.class);
+		// 商户认证
 		//将IP设置为从http请求头中获取的远端地址
 		baseReqVo.setIp(clientIp);
 		try {
-			// 商户认证
 			BaseRespVo<?> baseRespVo = merchantAuthService.checkMerchantAuth(baseReqVo);
 			if (GlobalConstantParamUtils.RESULT_CODE_SUCC.equals(baseRespVo.getCode())) {
 				// 若验证成功，将信息重新写入避免request信息消费后后续无法从request获取信息的问题
@@ -99,17 +99,6 @@ public class MerchantAuthFilter implements GlobalFilter, Ordered {
 		} finally {
 			stringRedisTemplate.delete("microservice:gateway:".concat(token));
 		}
-	}
-
-	/**
-	 * 优先级
-	 * @return int 数字越大优先级越低
-	 * @author Eric
-	 * @date 2019/4/4 13:36
-	 */
-	@Override
-	public int getOrder() {
-		return 2;
 	}
 
 	/**
@@ -169,5 +158,16 @@ public class MerchantAuthFilter implements GlobalFilter, Ordered {
 		// 指定编码，否则在浏览器中会中文乱码
 		response.getHeaders().add("Content-Type", "text/plain;charset=UTF-8");
 		return response.writeWith(Mono.just(buffer));
+	}
+
+	/**
+	 * 优先级
+	 * @return int 数字越大优先级越低
+	 * @author Eric
+	 * @date 2019/4/4 13:36
+	 */
+	@Override
+	public int getOrder() {
+		return 2;
 	}
 }
