@@ -1,0 +1,36 @@
+server:
+  port: 8602
+spring:
+  application:
+    name: microservice-admin
+  profiles:
+    include:
+      - security                                 #加载microservice-security配置文件
+  boot:
+    admin:
+      monitor:
+        period: 10000                            #更新程序状态的时间周期(单位ms)
+eureka:
+  instance:
+    metadata-map:                                                     #元数据设置
+      user.name: ${spring.security.user.name}
+      user.password: ${spring.security.user.password}
+      gated-launch: true                                              #灰度调用
+    health-check-url-path: /actuator/health
+    lease-renewal-interval-in-seconds: 5                              #设置心跳的时间间隔（默认是30秒）
+    lease-expiration-duration-in-seconds: 15                          #上一次收到client的心跳之后,等待下一次心跳的超时时间（默认是90秒）
+    instance-id: ${spring.application.name}:${random.int}             #在信息列表时显示主机名称
+    prefer-ip-address: true                                           #灰度调用
+  client:
+    service-url:
+      defaultZone: http://yrz_eureka:yrz_eureka@10.168.12.65:8101/eureka/,http://yrz_eureka:yrz_eureka@10.168.12.75:8102/eureka/,http://yrz_eureka:yrz_eureka@10.168.12.76:8103/eureka/
+    registry-fetch-interval-seconds: 3                                #表示eureka client间隔多久去拉取服务注册信息，默认为30秒
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - "*"                     #暴露所有接口
+  endpoint:
+    health:
+      show-details: ALWAYS          #向所有用户显示详细信息
