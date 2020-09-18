@@ -7,16 +7,17 @@
         <module>springcloud-eureka-apollo</module>
         <module>microservice-redis</module>
         <module>microservice-log</module>
-        <module>springcloud-test-parent</module>
+        <module>microservice-admin</module>
         <module>microservice-nodb-provider</module>
         <module>microservice-provider</module>
-        <module>springcloud-eureka</module>
         <module>microservice-api</module>
         <module>microservice-utils</module>
-        <module>springcloud-feign</module>
         <module>microservice-mongodb-provider</module>
         <module>microservice-security</module>
         <module>microservice-sleuth</module>
+        <module>springcloud-eureka</module>
+        <module>springcloud-test-parent</module>
+        <module>springcloud-feign</module>
         <module>springcloud-test-parent</module>
         <module>springcloud-gateway</module>
     </modules>
@@ -24,7 +25,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.8.RELEASE</version>
+        <version>2.1.8.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -53,11 +54,10 @@
         <maven.compile.target>1.8</maven.compile.target>
         <maven.compiler.version>3.8.1</maven.compiler.version>
         <sonar.scanner.version>3.5.0.1254</sonar.scanner.version>
-        <spring.cloud.version>Finchley.SR2</spring.cloud.version>
-        <spring.mybatis.version>2.0.0</spring.mybatis.version>
-        <tk.mybatis.version>1.1.4</tk.mybatis.version>
+        <spring.cloud.version>Greenwich.SR5</spring.cloud.version>
+        <spring.mybatis.version>2.1.0</spring.mybatis.version>
         <org.hibernate.version>6.0.9.Final</org.hibernate.version>
-        <alibaba.druid.version>1.1.21</alibaba.druid.version>
+        <alibaba.druid.version>1.0.31</alibaba.druid.version>
         <com.oracle.version>11g</com.oracle.version>
         <redis.clients.version>2.9.0</redis.clients.version>
         <org.redisson.version>3.8.2</org.redisson.version>
@@ -65,11 +65,16 @@
         <commons.lang.version>3.8.1</commons.lang.version>
         <org.apache.httpclient>4.5.7</org.apache.httpclient>
         <org.apache.slf4j>1.7.25</org.apache.slf4j>
-        <spring.beans.version>5.0.12.RELEASE</spring.beans.version>
+        <spring.beans.version>5.1.9.RELEASE</spring.beans.version>
         <de.codecentric.version>2.0.5</de.codecentric.version>
-        <apollo.version>1.5.1</apollo.version>
+        <apollo.client>1.4.0</apollo.client>
         <guice.version>4.1.0</guice.version>
-        <snakeyaml.version>1.25</snakeyaml.version>
+        <snakeyaml.version>1.26</snakeyaml.version>
+        <mysql.version>5.1.29</mysql.version>
+        <commonsnet.version>1.4.1</commonsnet.version>
+        <jcraft.version>0.1.54</jcraft.version>
+        <dubbo.spring-boot.version>2.7.7</dubbo.spring-boot.version>
+        <netty-all.version>4.1.39.Final</netty-all.version>
     </properties>
 
     <dependencyManagement>
