@@ -1,94 +1,79 @@
-/*
 package com.noodles.gateway.config;
 
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingClass;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
 
 import com.alibaba.druid.filter.config.ConfigTools;
 import com.alibaba.druid.pool.DruidDataSource;
-import com.noodles.log.MySlf4j;
+import com.noodles.logback.MySlf4j;
 
+/**
+ * @filename SecurityDataSource
+ * @description druid数据源配置
+ * @author 王承
+ * @date 2019/4/2 11:07
+ */
 @Configuration
+@ConditionalOnProperty(value = "spring.datasource.name", havingValue = "oracle")
 public class DataSourceSecurityConfig {
 
-	*/
-/** 驱动 *//*
-
+	/** 驱动 */
 	@Value("${spring.datasource.driver-class-name}")
 	private String driver;
-	*/
-/** 链接 *//*
-
+	/** 链接 */
 	@Value("${spring.datasource.url}")
 	private String url;
-	*/
-/** 用户名 *//*
-
+	/** 用户名 */
 	@Value("${spring.datasource.username}")
 	private String username;
-	*/
-/** 密码 *//*
-
+	/** 密码 */
 	@Value("${spring.datasource.password}")
 	private String password;
-	*/
-/** 数据源连接验证 *//*
-
+	/** 数据源连接验证 */
 	@Value("${spring.datasource.validation-query}")
 	private String validationQuery;
-	*/
-/** 初始化提供的连接数 *//*
-
+	/** 初始化提供的连接数 */
 	@Value("${spring.datasource.initial-size}")
 	private int initialSize;
-	*/
-/** 等待连接获取的最大超时时间(毫秒) *//*
-
+	/** 等待连接获取的最大超时时间(毫秒) */
 	@Value("${spring.datasource.max-wait}")
 	private long maxWait;
-	*/
-/** 数据库连接池的最小维持连接数 *//*
-
+	/** 数据库连接池的最小维持连接数 */
 	@Value("${spring.datasource.min-idle}")
 	private int minIdle;
-	*/
-/** 最大的连接数 *//*
-
+	/** 最大的连接数 */
 	@Value("${spring.datasource.max-active}")
 	private int maxActive;
-	*/
-/** 假如一个对象验证失败，则对象将被从池中释放 *//*
-
+	/** 假如一个对象验证失败，则对象将被从池中释放 */
 	@Value("${spring.datasource.test-while-idle}")
 	private Boolean testWhileIdle;
-	*/
-/** 确认连接有效SQL的执行查询超时时间（秒） *//*
-
+	/** 确认连接有效SQL的执行查询超时时间（秒） */
 	@Value("${spring.datasource.validation-query-timeout}")
 	private int validationQueryTimeout;
-	*/
-/** 公钥 *//*
-
+	/** 公钥 */
 	@Value("${spring.datasource.public-key}")
 	private String publicKey;
-	*/
-/** 配置ConfigFilter解密密码 *//*
-
+	/** 配置ConfigFilter解密密码 */
 	@Value("${spring.datasource.connectionProperties}")
 	private String connectionProperties;
-	*/
-/** 过滤器 *//*
-
+	/** 过滤器 */
 	@Value("${spring.datasource.filters}")
 	private String filters;
-	*/
-/** 数据源对象 *//*
-
+	/** 数据源对象 */
 	private DruidDataSource druidDataSource = new DruidDataSource();
 
+	/**
+	 * druid数据源配置
+	 * @return javax.sql.DataSource
+	 * @author 王承
+	 * @date 2019/4/2 11:16
+	 */
 	@Bean("dataSource")
 	public DataSource druidDataSource() throws Exception {
 
@@ -114,4 +99,3 @@ public class DataSourceSecurityConfig {
 		}
 	}
 }
-*/

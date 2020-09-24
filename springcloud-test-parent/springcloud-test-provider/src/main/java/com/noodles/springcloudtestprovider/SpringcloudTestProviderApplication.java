@@ -8,7 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-@ComponentScan(basePackages = { "com.noodles.springcloudtestprovider", "com.noodles.security", "com.noodles.redis" })
+@ComponentScan(basePackages = { "com.noodles.springcloudtestprovider", "com.noodles.redis" })
 @MapperScan(basePackages = { "com.noodles.springcloudtestprovider.springbootmybatis.dao" })
 public class SpringcloudTestProviderApplication {
 	/**

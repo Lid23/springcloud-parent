@@ -14,12 +14,23 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>com.noodles</groupId>
             <artifactId>springcloud-test-feign</artifactId>
+            <version>${com.noodles.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.noodles</groupId>
+            <artifactId>noodles-api</artifactId>
+            <version>${com.noodles.version}</version>
         </dependency>
     </dependencies>
 

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 import com.noodles.api.vo.req.BaseReqVo;
 import com.noodles.api.vo.resp.BaseRespVo;
-import com.noodles.common.response.utils.ResponseUtils;
+import com.noodles.response.utils.ResponseUtils;
 import com.noodles.springcloudtestfeign.service.FeignService;
 
 /**
@@ -19,8 +19,17 @@ import com.noodles.springcloudtestfeign.service.FeignService;
 public class FeignFallBack implements FeignService {
 
 	@Override
-	public BaseRespVo<String> hello(@Valid BaseReqVo<String> baseReqVo) {
+	public BaseRespVo<String> postPerson(@Valid BaseReqVo<String> baseReqVo) {
 		return ResponseUtils.responseFeignHystrix(null);
 	}
 
+	@Override
+	public BaseRespVo<String> getPerson(@Valid BaseReqVo<String> baseReqVo) {
+		return ResponseUtils.responseFeignHystrix(null);
+	}
+
+	@Override
+	public String heartbeat() {
+		return null;
+	}
 }

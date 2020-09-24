@@ -6,15 +6,6 @@
     <modules>
         <module>springcloud-eureka-apollo</module>
         <module>microservice-redis</module>
-        <module>microservice-log</module>
-        <module>microservice-admin</module>
-        <module>microservice-nodb-provider</module>
-        <module>microservice-provider</module>
-        <module>microservice-api</module>
-        <module>microservice-utils</module>
-        <module>microservice-mongodb-provider</module>
-        <module>microservice-security</module>
-        <module>microservice-sleuth</module>
         <module>springcloud-eureka</module>
         <module>springcloud-test-parent</module>
         <module>springcloud-feign</module>
@@ -25,8 +16,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.8.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <version>2.3.4.RELEASE</version>
     </parent>
 
     <groupId>com.noodles</groupId>
@@ -53,8 +43,8 @@
         <maven.compile.source>1.8</maven.compile.source>
         <maven.compile.target>1.8</maven.compile.target>
         <maven.compiler.version>3.8.1</maven.compiler.version>
-        <sonar.scanner.version>3.5.0.1254</sonar.scanner.version>
-        <spring.cloud.version>Greenwich.SR5</spring.cloud.version>
+        <spring.cloud.version>Hoxton.SR8</spring.cloud.version>
+        <maven.compiler.version>3.8.1</maven.compiler.version>
         <spring.mybatis.version>2.1.0</spring.mybatis.version>
         <org.hibernate.version>6.0.9.Final</org.hibernate.version>
         <alibaba.druid.version>1.0.31</alibaba.druid.version>
@@ -65,9 +55,8 @@
         <commons.lang.version>3.8.1</commons.lang.version>
         <org.apache.httpclient>4.5.7</org.apache.httpclient>
         <org.apache.slf4j>1.7.25</org.apache.slf4j>
-        <spring.beans.version>5.1.9.RELEASE</spring.beans.version>
         <de.codecentric.version>2.0.5</de.codecentric.version>
-        <apollo.client>1.4.0</apollo.client>
+        <apollo.version>1.5.1</apollo.version>
         <guice.version>4.1.0</guice.version>
         <snakeyaml.version>1.26</snakeyaml.version>
         <mysql.version>5.1.29</mysql.version>
@@ -87,149 +76,6 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <!--spring boot admin依赖-->
-            <dependency>
-                <groupId>de.codecentric</groupId>
-                <artifactId>spring-boot-admin-starter-server</artifactId>
-                <version>${de.codecentric.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <!--mybatis依赖-->
-            <dependency>
-                <groupId>org.mybatis.spring.boot</groupId>
-                <artifactId>mybatis-spring-boot-starter</artifactId>
-                <version>${spring.mybatis.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>tk.mybatis</groupId>
-                <artifactId>mapper-spring-boot-starter</artifactId>
-                <version>${tk.mybatis.version}</version>
-            </dependency>
-            <!--validator依赖-->
-            <dependency>
-                <groupId>org.hibernate</groupId>
-                <artifactId>hibernate-validator</artifactId>
-                <version>${org.hibernate.version}</version>
-            </dependency>
-            <!--druid连接池-->
-            <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>druid-spring-boot-starter</artifactId>
-                <version>${alibaba.druid.version}</version>
-            </dependency>
-            <!--oracle驱动-->
-            <dependency>
-                <groupId>com.oracle.dirver</groupId>
-                <artifactId>jdbc-driver</artifactId>
-                <version>${com.oracle.version}</version>
-            </dependency>
-            <!--redis客户端-->
-            <dependency>
-                <groupId>redis.clients</groupId>
-                <artifactId>jedis</artifactId>
-                <version>${redis.clients.version}</version>
-                <scope>compile</scope>
-            </dependency>
-            <!--redisson支持-->
-            <dependency>
-                <groupId>org.redisson</groupId>
-                <artifactId>redisson-spring-boot-starter</artifactId>
-                <version>${org.redisson.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.redisson</groupId>
-                <artifactId>redisson</artifactId>
-                <version>${org.redisson.version}</version>
-            </dependency>
-            <!-- GSON -->
-            <dependency>
-                <groupId>com.google.code.gson</groupId>
-                <artifactId>gson</artifactId>
-                <version>${com.google.gson}</version>
-            </dependency>
-            <!--commns-lang3-->
-            <dependency>
-                <groupId>org.apache.commons</groupId>
-                <artifactId>commons-lang3</artifactId>
-                <version>${commons.lang.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-beans</artifactId>
-                <version>${spring.beans.version}</version>
-                <scope>compile</scope>
-            </dependency>
-            <!--httpclient-->
-            <dependency>
-                <groupId>org.apache.httpcomponents</groupId>
-                <artifactId>httpclient</artifactId>
-                <version>${org.apache.httpclient}</version>
-                <scope>compile</scope>
-            </dependency>
-            <!--log-->
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>log4j-over-slf4j</artifactId>
-                <version>${org.apache.slf4j}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.google.inject</groupId>
-                <artifactId>guice</artifactId>
-                <version>${guice.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.yaml</groupId>
-                <artifactId>snakeyaml</artifactId>
-                <version>${snakeyaml.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.ctrip.framework.apollo</groupId>
-                <artifactId>apollo-client</artifactId>
-                <version>${apollo.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.noodles</groupId>
-                <artifactId>microservice-log</artifactId>
-                <version>${com.noodles.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.noodles</groupId>
-                <artifactId>microservice-api</artifactId>
-                <version>${com.noodles.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.noodles</groupId>
-                <artifactId>microservice-utils</artifactId>
-                <version>${com.noodles.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.noodles</groupId>
-                <artifactId>microservice-security</artifactId>
-                <version>${com.noodles.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.noodles</groupId>
-                <artifactId>microservice-sleuth</artifactId>
-                <version>${com.noodles.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.noodles</groupId>
-                <artifactId>microservice-redis</artifactId>
-                <version>${com.noodles.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.noodles</groupId>
-                <artifactId>microservice-nodb-provider</artifactId>
-                <version>${com.noodles.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.noodles</groupId>
-                <artifactId>microservice-provider</artifactId>
-                <version>${com.noodles.version}</version>
-            </dependency>
         </dependencies>
     </dependencyManagement>
-
-
 </project>

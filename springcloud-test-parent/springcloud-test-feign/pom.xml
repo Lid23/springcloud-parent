@@ -15,10 +15,22 @@
         <dependency>
             <groupId>com.noodles</groupId>
             <artifactId>springcloud-feign</artifactId>
+            <version>${com.noodles.version}</version>
         </dependency>
         <dependency>
             <groupId>com.noodles</groupId>
-            <artifactId>microservice-utils</artifactId>
+            <artifactId>noodles-util</artifactId>
+            <version>${com.noodles.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.noodles</groupId>
+            <artifactId>noodles-api</artifactId>
+            <version>${com.noodles.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.noodles</groupId>
+            <artifactId>noodles-logback</artifactId>
+            <version>${com.noodles.version}</version>
         </dependency>
     </dependencies>
 

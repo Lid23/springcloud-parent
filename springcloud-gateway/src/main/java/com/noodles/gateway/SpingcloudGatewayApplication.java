@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Scope;
 
 import com.netflix.loadbalancer.IRule;
 import com.noodles.gateway.filter.RibbonFilter;
-import com.noodles.log.MySlf4j;
+import com.noodles.logback.MySlf4j;
 
 /**
  * @filename CreditGatewayApplication
@@ -18,7 +18,7 @@ import com.noodles.log.MySlf4j;
  * @date 2019/4/3 8:49
  */
 @SpringBootApplication
-@ComponentScan(basePackages = {"com.noodles.gateway", "com.noodles.redis", "com.noodles.security"})
+@ComponentScan(basePackages = {"com.noodles.gateway", "com.noodles.redis"})
 @MapperScan(basePackages = { "com.noodles.gateway.dao"})
 public class SpingcloudGatewayApplication {
 
@@ -27,7 +27,7 @@ public class SpingcloudGatewayApplication {
 		MySlf4j.textInfo("微服务-网关-启动完成");
 	}
 
-	/**z
+	/**
 	 * 负载均衡策略
 	 * @return com.netflix.loadbalancer.IRule
 	 * @author Eric

@@ -9,14 +9,14 @@ import com.noodles.api.exception.MicroserviceException;
 import com.noodles.api.exception.MicroserviceServiceException;
 import com.noodles.api.vo.req.BaseReqVo;
 import com.noodles.api.vo.resp.BaseRespVo;
-import com.noodles.common.constant.utils.GlobalConstantParamUtils;
-import com.noodles.common.response.utils.ResponseUtils;
+import com.noodles.constant.utils.GlobalConstantParamUtils;
 import com.noodles.gateway.bean.MerchantConfBean;
 import com.noodles.gateway.bean.MerchantLimitBean;
 import com.noodles.gateway.dao.IMerchantAuthDao;
 import com.noodles.gateway.service.IMerchantAuthService;
 import com.noodles.gateway.utils.GatewayConstantParamUtils;
 import com.noodles.gateway.utils.MerchantUtils;
+import com.noodles.response.utils.ResponseUtils;
 
 /**
  * @filename MerchantAuthReadServiceImpl

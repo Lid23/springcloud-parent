@@ -11,8 +11,8 @@ import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 
-import com.noodles.common.security.utils.Base64Utils;
-import com.noodles.log.MySlf4j;
+import com.noodles.logback.MySlf4j;
+import com.noodles.security.utils.Base64Utils;
 import reactor.core.publisher.Mono;
 
 /**
